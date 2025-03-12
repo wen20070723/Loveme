@@ -4,255 +4,68 @@
 <head>
     <meta charset="UTF-8">
     <title>终极问题</title>
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-family: Arial, sans-serif;
-            transition: all 0.5s;
-            background: #f0f0f0;
-        }
-
-        .step {
-            display: none;
-            text-align: center;
-            padding: 20px;
-            border-radius: 10px;
-            background: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s ease-out;
-        }
-
-        .active {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        button {
-            padding: 10px 20px;
-            margin: 10px;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: none;
-            border-radius: 5px;
-        }
-
-        #loveButton {
-            background: #ff4081;
-            color: white;
-        }
-
-        #hateButton {
-            background: #616161;
-            color: white;
-        }
-
-        .heart-rain {
-            position: fixed;
-            pointer-events: none;
-            width: 100%;
-            height: 100%;
-        }
-
-        .heart {
-            position: absolute;
-            color: #ff4081;
-            font-size: 20px;
-            animation: fall 3s linear infinite;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(100vh) rotate(360deg);
-            }
-        }
-
-        .blood-effect {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 0, 0, 0.1);
-            pointer-events: none;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-
-        .spooky-text {
-            animation: spooky 2s infinite;
-        }
-
-        @keyframes spooky {
-            0%,
-            100% {
-                transform: rotate(0deg);
-            }
-
-            25% {
-                transform: rotate(5deg);
-            }
-
-            75% {
-                transform: rotate(-5deg);
-            }
-        }
-
-        .drip {
-            position: absolute;
-            background: #ff0000;
-            width: 2px;
-            height: 10px;
-            animation: drip 1s infinite;
-        }
-
-        @keyframes drip {
-            0% {
-                height: 0;
-            }
-
-            50% {
-                height: 15px;
-            }
-
-            100% {
-                height: 0;
-            }
-        }
-
-        .shake {
-            animation: shake 0.5s infinite;
-        }
-
-        @keyframes shake {
-            0% {
-                transform: translate(1px, 1px) rotate(0deg);
-            }
-
-            10% {
-                transform: translate(-1px, -2px) rotate(-1deg);
-            }
-
-            20% {
-                transform: translate(-3px, 0px) rotate(1deg);
-            }
-
-            30% {
-                transform: translate(3px, 2px) rotate(0deg);
-            }
-
-            40% {
-                transform: translate(1px, -1px) rotate(1deg);
-            }
-
-            50% {
-                transform: translate(-1px, 2px) rotate(-1deg);
-            }
-
-            60% {
-                transform: translate(-3px, 1px) rotate(0deg);
-            }
-
-            70% {
-                transform: translate(3px, 1px) rotate(-1deg);
-            }
-
-            80% {
-                transform: translate(-1px, -1px) rotate(1deg);
-            }
-
-            90% {
-                transform: translate(1px, 2px) rotate(0deg);
-            }
-
-            100% {
-                transform: translate(1px, -2px) rotate(-1deg);
-            }
-        }
-
-        /* 新增温馨少女心动画 */
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: #ff4081;
-            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-            animation: confetti-fall 3s linear infinite;
-        }
-
-        @keyframes confetti-fall {
-            to {
-                transform: translateY(100vh) rotate(360deg);
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 <div class="step active" id="step1">
-    <h2>第一步：你小时候有没有遇到过奇怪的小伙伴，醒来却发现只是梦？</h2>
+    <h2>第一步：你小时候有没有在旧玩具里发现过奇怪的东西？</h2>
     <button onclick="nextStep('step2', 'yes')">有</button>
     <button onclick="nextStep('step2', 'no')">没有</button>
 </div>
 
 <div class="step" id="step2">
-    <h2>第二步：在寂静的森林里，你听到过类似有人在哭泣的声音吗？</h2>
-    <button onclick="nextStep('step3', 'yes')">听到过</button>
-    <button onclick="nextStep('step3', 'no')">没听到过</button>
+    <h2>第二步：你敢不敢在月圆之夜去荒村的古井边打水？</h2>
+    <button onclick="nextStep('step3', 'yes')">敢</button>
+    <button onclick="nextStep('step3', 'no')">不敢</button>
 </div>
 
 <div class="step" id="step3">
-    <h2>第三步：你是否有过照镜子时感觉镜子里的人不是自己的瞬间？</h2>
-    <button onclick="nextStep('step4', 'yes')">有过</button>
+    <h2>第三步：你家里的老照片有没有人像突然消失的情况？</h2>
+    <button onclick="nextStep('step4', 'yes')">有</button>
     <button onclick="nextStep('step4', 'no')">没有</button>
 </div>
 
 <div class="step" id="step4">
-    <h2>第四步：你家里的钟表有没有突然停止，然后又莫名其妙开始走动的情况？</h2>
+    <h2>第四步：你有没有在无人的教室里听到过朗朗读书声？</h2>
     <button onclick="nextStep('step5', 'yes')">有</button>
     <button onclick="nextStep('step5', 'no')">没有</button>
 </div>
 
 <div class="step" id="step5">
-    <h2>第五步：当你一个人在电梯里时，有没有感觉背后发凉的经历？</h2>
-    <button onclick="nextStep('step6', 'yes')">有</button>
-    <button onclick="nextStep('step6', 'no')">没有</button>
+    <h2>第五步：你敢不敢在半夜的电影院独自看恐怖片？</h2>
+    <button onclick="nextStep('step6', 'yes')">敢</button>
+    <button onclick="nextStep('step6', 'no')">不敢</button>
 </div>
 
 <div class="step" id="step6">
-    <h2>第六步：你是否在空无一人的房间里听到过脚步声？</h2>
-    <button onclick="nextStep('step7', 'yes')">听到过</button>
-    <button onclick="nextStep('step7', 'no')">没听到过</button>
+    <h2>第六步：你有没有感觉自己的影子和自己动作不一致的时候？</h2>
+    <button onclick="nextStep('step7', 'yes')">有</button>
+    <button onclick="nextStep('step7', 'no')">没有</button>
 </div>
 
 <div class="step" id="step7">
-    <h2>第七步：你敢不敢在午夜十二点对着镜子削苹果？</h2>
-    <button onclick="nextStep('step8', 'yes')">敢</button>
-    <button onclick="nextStep('step8', 'no')">不敢</button>
+    <h2>第七步：你家的窗户有没有在无风的时候突然晃动？</h2>
+    <button onclick="nextStep('step8', 'yes')">有</button>
+    <button onclick="nextStep('step8', 'no')">没有</button>
 </div>
 
 <div class="step" id="step8">
-    <h2>第八步：你有没有在照片里发现过奇怪的影子或人脸？</h2>
-    <button onclick="nextStep('step9', 'yes')">有</button>
-    <button onclick="nextStep('step9', 'no')">没有</button>
+    <h2>第八步：你敢不敢在古老的城堡里住一晚？</h2>
+    <button onclick="nextStep('step9', 'yes')">敢</button>
+    <button onclick="nextStep('step9', 'no')">不敢</button>
 </div>
 
 <div class="step" id="step9">
-    <h2>第九步：你家的宠物有没有突然对着某个地方狂叫，而你却什么都没看到的情况？</h2>
+    <h2>第九步：你有没有在梦中被一个神秘人追赶？</h2>
     <button onclick="nextStep('step10', 'yes')">有</button>
     <button onclick="nextStep('step10', 'no')">没有</button>
 </div>
 
 <div class="step" id="step10">
-    <h2>第十步：你是否有过在睡梦中感觉被人压着，无法动弹的经历？</h2>
-    <button onclick="nextStep('finalStep', 'yes')">有</button>
-    <button onclick="nextStep('finalStep', 'no')">没有</button>
+    <h2>第十步：你敢不敢在午夜的公园荡秋千？</h2>
+    <button onclick="nextStep('finalStep', 'yes')">敢</button>
+    <button onclick="nextStep('finalStep', 'no')">不敢</button>
 </div>
 
 <div class="step" id="finalStep">
@@ -265,132 +78,14 @@
 <div class="heart-rain" id="heartContainer"></div>
 <div class="blood-effect" id="bloodEffect"></div>
 <div id="confetti-container"></div>
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <p id="popup-text"></p>
+        <button onclick="closePopup()">知道啦</button>
+    </div>
+</div>
 
-<script>
-    let hateCount = 0;
-    let maxSize = 1;
-    let specialEffectCount = 0;
-
-    function nextStep(stepId, choice) {
-        document.querySelector('.active').classList.remove('active');
-        document.getElementById(stepId).classList.add('active');
-
-        if (choice === 'yes') {
-            specialEffectCount++;
-            if (specialEffectCount % 2 === 0) {
-                document.body.classList.add('shake');
-                setTimeout(() => {
-                    document.body.classList.remove('shake');
-                }, 1000);
-            }
-        }
-    }
-
-    function createHeart() {
-        const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.innerHTML = '❤';
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.animationDuration = Math.random() * 2 + 3 + 's';
-        document.getElementById('heartContainer').appendChild(heart);
-        setTimeout(() => heart.remove(), 5000);
-    }
-
-    function createConfetti() {
-        const confetti = document.createElement('div');
-        confetti.className = 'confetti';
-        confetti.style.left = Math.random() * 100 + 'vw';
-        confetti.style.animationDuration = Math.random() * 2 + 3 + 's';
-        document.getElementById('confetti-container').appendChild(confetti);
-        setTimeout(() => confetti.remove(), 5000);
-    }
-
-    function showLove() {
-        document.body.style.background = '#ffe6f2';
-        document.getElementById('bloodEffect').style.display = 'none';
-
-        // 创建爱心雨
-        setInterval(createHeart, 300);
-        // 创建五彩纸屑雨
-        setInterval(createConfetti, 150);
-
-        // 修改按钮文字
-        document.querySelector('h1').innerHTML = "我就知道！❤";
-        document.getElementById('loveButton').style.display = 'none';
-        document.getElementById('hateButton').style.display = 'none';
-
-        // 让文字更加温馨少女心
-        const allHeadings = document.querySelectorAll('h1, h2');
-        allHeadings.forEach(heading => {
-            heading.style.color = '#ff4081';
-            heading.style.textShadow = '0 0 10px #fff';
-        });
-    }
-
-    function createDrip() {
-        const drip = document.createElement('div');
-        drip.className = 'drip';
-        drip.style.left = Math.random() * 100 + 'vw';
-        drip.style.animationDelay = Math.random() * 2 + 's';
-        document.body.appendChild(drip);
-        setTimeout(() => drip.remove(), 3000);
-    }
-
-    function updateSpookyEffects() {
-        if (hateCount > 3) {
-            document.querySelectorAll('h1, h2').forEach(el => {
-                el.classList.add('spooky-text');
-            });
-        }
-        if (hateCount > 6) {
-            document.body.style.backgroundColor = `hsl(0, 100%, ${30 - hateCount}%)`;
-        }
-        if (hateCount > 9) {
-            document.body.style.filter = 'blur(2px)';
-        }
-        if (hateCount > 12) {
-            document.body.style.transform = 'scale(0.95)';
-        }
-        if (hateCount > 15) {
-            document.body.style.letterSpacing = '3px';
-        }
-        if (hateCount > 18) {
-            document.body.style.transform = 'rotate(3deg)';
-        }
-    }
-
-    function hate() {
-        hateCount++;
-        const hateBtn = document.getElementById('hateButton');
-        const loveBtn = document.getElementById('loveButton');
-
-        hateBtn.style.transform = `scale(${Math.max(0.1, 0.8 - hateCount * 0.05)})`;
-        loveBtn.style.transform = `scale(${1 + hateCount * 0.1})`;
-
-        if (hateCount % 2 === 0) {
-            hateBtn.innerHTML = "讨...厌...";
-        } else {
-            hateBtn.innerHTML = "为什么...";
-        }
-
-        if (hateCount > 3) {
-            createDrip();
-        }
-
-        if (hateCount > 2) {
-            document.getElementById('bloodEffect').style.display = 'block';
-            document.getElementById('bloodEffect').style.opacity = Math.min(1, hateCount * 0.1);
-        }
-        updateSpookyEffects();
-
-        if (hateCount > 20) {
-            hateBtn.style.display = 'none';
-        }
-        if (hateCount > 25) {
-            showLove();
-        }
-    }
-</script>
+<script src="script.js"></script>
 </body>
 
 </html>
